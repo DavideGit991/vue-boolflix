@@ -53,7 +53,8 @@ nav{
 .box-films,.box-series{
   margin: 5px 0 25px 0;
   width: 100%;
-  overflow-x: auto;
+  height: 550px;
+  overflow-x: scroll;
 }
 .flag{
   font-size: 150%;
@@ -68,19 +69,19 @@ nav{
   border-radius: 5px;
   background-color: rgb(0, 0, 0,0.6);
   /* border: 1px solid green; */
-  height: 500px;
-  width: 200px;
+  min-height: 500px;
+  min-width: 200px;
 }
 .img-info, .img-info{
-  width: 153px;
-  height: 226px;
+  width: 76px;
+  height: 113px;
 }
 .img-poster, .img-poster{
-  left: 5px;
-  top: 5px;
+  top: 10px;
   height: 490px;
   width: 190px;
 }
+
 .img-poster:hover, .img-poster:hover{
   cursor: pointer;
   opacity: 0;
@@ -88,6 +89,7 @@ nav{
 .box-film p, .box-serieTv p{
   text-align: center;
   width: 90%;
-  overflow-y: auto;
-  text-overflow: ellipsis;
+  max-height: 300px;
+  overflow-y: hidden;
+  text-overflow: "...";
 }
