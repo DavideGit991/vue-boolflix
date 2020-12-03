@@ -56,8 +56,6 @@ var app = new Vue({
       })
       this.nomeRicercato = "";
 
-      this.arrayFilms.vote_average = Math.round(this.arrayFilms.vote_average/2)
-      this.araySerieTv.vote_average = Math.round(this.araySerieTv.vote_average/2)
     }
 
 

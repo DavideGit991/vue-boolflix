@@ -27,7 +27,7 @@
 <!-- SEZIONE FILM ---------------------------------------------------->
         <section class="row d-flex flex-column justify-content-around ">
 
-          <div class="title title p-3">
+          <div class="title title p-1">
             <h1>Films</h1>
           </div>
 
@@ -42,9 +42,15 @@
                 <h4> {{film.title}} </h4>
                 <!-- titolo originale -->
                 <h4> {{film.original_title}} </h4>
+
+
                 <!-- lingua -->
-                <h6> {{film.original_language}} </h6>
-                <div class="d-flex flex-column justify-content-around align-items-center ">
+                <h6 v-if="film.original_language == 'it'"> &#x1f1ee;&#x1f1f9; </h6>
+                <h6 v-else-if="film.original_language == 'en'"> &#x1f1ec;&#x1f1e7; </h6>
+                <h6 v-else-if="film.original_language == 'es'">	&#x1f1ea;&#x1f1f8; </h6>
+                <h6 v-else-if="film.original_language == 'us'"> &#x1f1fa;&#x1f1f2; </h6>
+                <h6 v-else>  &#x1f1ea;&#x1f1fa; </h6>
+
                   <!-- punteggio -->
                 <h6
                   v-if="film.vote_average > 8"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -61,7 +67,7 @@
                 <h6
                   v-else> <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
                 </h6>
-                </div>
+
             </div>
 
           </div>
@@ -71,7 +77,7 @@
 <!-- SERIE TV ----------------------------------------------------------->
         <section class="row d-flex justify-content-around ">
 
-          <div class="title p-3">
+          <div class="title p-1">
             <h1>Serie Tv</h1>
           </div>
 
@@ -86,8 +92,12 @@
                 <!-- titolo originale -->
                 <h4> {{serieTv.original_name}} </h4>
                 <!-- lingua -->
-                <h6> {{serieTv.original_language}} </h6>
-                <div class="d-flex flex-column justify-content-around align-items-center ">
+                <h6 v-if="serieTv.original_language == 'it'"> &#x1f1ee;&#x1f1f9; </h6>
+                <h6 v-else-if="serieTv.original_language == 'en'"> &#x1f1ec;&#x1f1e7; </h6>
+                <h6 v-else-if="serieTv.original_language == 'es'">	&#x1f1ea;&#x1f1f8; </h6>
+                <h6 v-else-if="serieTv.original_language == 'us'"> &#x1f1fa;&#x1f1f2; </h6>
+                <h6 v-else>  &#x1f1ea;&#x1f1fa; </h6>
+  
                   <!-- punteggio -->
                 <h6
                   v-if="serieTv.vote_average > 8"> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -105,7 +115,6 @@
                   v-else> <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
                 </h6>
 
-                </div>
             </div>
           </div>
         </section>
