@@ -5,37 +5,66 @@
 // Titolo Originale
 // Lingua
 // Voto
+const api_key= 'da8ab8e676fdc112f397d51f49a3af17'
+const apiOverwiev = 'https://developers.themoviedb.org/3/getting-started/introduction'
+// const apiConfig = 'https://api.themoviedb.org/3/configuration?api_key=da8ab8e676fdc112f397d51f49a3af17'
+const apiSearchMovie = 'https://api.themoviedb.org/3/search/movie?'
+const apiSearchSerieTv = 'https://api.themoviedb.org/3/search/tv?'
 
-var apiMovie = 'https://api.themoviedb.org/3/discover/movie?api_key=da8ab8e676fdc112f397d51f49a3af17'
-var apiSerieTv = 'https://api.themoviedb.org/3/discover/tv?api_key=da8ab8e676fdc112f397d51f49a3af17'
 var app = new Vue({
   el:"#app",
   data:{
-    films:[],
-    serieTv:[],
+
+    arrayFilms:[],
+    araySerieTv:[],
     nomeRicercato:""
+
   },
 
-  mounted:function () {
+  methods:
+  {
 
-    // chiamata api per restituzione array films
-    axios
-    .get(apiMovie)
-    .then((risposta) =>{
-      this.films = risposta.data.results
-      // console.log(risposta.data.results);
-      console.log("films:",this.films);
-    })
+    // ricerca in Db di film attraverso nomeRicercato
+    ricerca: function()
+    {
+      axios
+      .get(apiSearchMovie,
+        {
+        params:{
+          query:this.nomeRicercato,
+          api_key:'da8ab8e676fdc112f397d51f49a3af17'
+        }
+        })
+      .then((risposta) =>{
 
-    // chiamata api per restituzione array serieTv
-    axios
-    .get(apiSerieTv)
-    .then((risposta) =>{
-      this.serieTv = risposta.data.results
-      // console.log(risposta.data.results);
-      console.log("serieTv:",this.serieTv);
-    })
-  },
+        this.arrayFilms = risposta.data.results;
+        console.log("Films:", this.arrayFilms);
+      });
+
+      // ricerca in Db della serie tv attraverso nomeRicercato
+      axios
+      .get(apiSearchSerieTv,
+        {
+        params:{
+          query:this.nomeRicercato,
+          api_key:'da8ab8e676fdc112f397d51f49a3af17'
+        }
+        })
+      .then((risposta) =>{
+        this.araySerieTv = risposta.data.results;
+        console.log("SerieTV:",this.araySerieTv);
+      })
+      this.nomeRicercato = "";
+
+      this.arrayFilms.vote_average = Math.round(this.arrayFilms.vote_average/2)
+      this.araySerieTv.vote_average = Math.round(this.araySerieTv.vote_average/2)
+    }
+
+
+  }
+
+
+
 
 
 });
