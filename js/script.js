@@ -27,6 +27,7 @@ var app = new Vue({
         {
         params:{
           query:this.nomeRicercato,
+          language:"it-IT",
           api_key:'da8ab8e676fdc112f397d51f49a3af17'
         }
         })
@@ -42,6 +43,7 @@ var app = new Vue({
         {
         params:{
           query:this.nomeRicercato,
+          language:"it-IT",
           api_key:'da8ab8e676fdc112f397d51f49a3af17'
         }
         })
