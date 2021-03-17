@@ -9,18 +9,21 @@ const apiSearchSerieTv = 'https://api.themoviedb.org/3/search/tv?'
 var app = new Vue({
   el:"#app",
   data:{
+    searchbar:false,
 
     arrayFilms:[],
-    araySerieTv:[],
+    arraySerieTv:[],
     nomeRicercato:""
 
   },
 
   methods:
   {
-
+    showSearchBar(){
+      this.searchbar = !this.searchbar;
+    },
     // ricerca in Db di film attraverso nomeRicercato
-    ricerca: function()
+    ricerca()
     {
       axios
       .get(apiSearchMovie,
@@ -34,7 +37,7 @@ var app = new Vue({
       .then((risposta) =>{
 
         this.arrayFilms = risposta.data.results;
-        console.log("Films:", this.arrayFilms);
+        // console.log("Films:", this.arrayFilms);
       });
 
       // ricerca in Db della serie tv attraverso nomeRicercato
@@ -48,8 +51,8 @@ var app = new Vue({
         }
         })
       .then((risposta) =>{
-        this.araySerieTv = risposta.data.results;
-        console.log("SerieTV:",this.araySerieTv);
+        this.arraySerieTv = risposta.data.results;
+        // console.log("SerieTV:",this.araySerieTv);
       })
       this.nomeRicercato = "";
 
